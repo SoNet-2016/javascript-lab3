@@ -48,14 +48,23 @@ elenco_pizze = [
     }
 ]
 
+//funzione che stampa l'elenco delle pizze
 function stampa_elenco_pizze()
 {
-    for (variable of elenco_pizze) {
-        aggiungi_elemento_pizza(variable["nome_pizza"],variable["nome_pizzeria"],variable["img_alt"],variable["img_url"]);
+    //il costrutto for...of è stato aggiunto solo con es6, quindi potrebbe non funzionare con vecchi browser
+    for (var singola_pizza of elenco_pizze) {
+        aggiungi_elemento_pizza(singola_pizza["nome_pizza"],singola_pizza["nome_pizzeria"],singola_pizza["img_alt"],singola_pizza["img_url"]);
     }
     return true ;
 }
 
+/*
+* @param {string} nomePizza
+* @param {string} nomePizzeria
+* @param {string} imgAlt
+* @param {string} imgUrl
+* funzione che aggiunge una pizza all'elenco
+* */
 function aggiungi_elemento_pizza(nomePizza, nomePizzeria, imgAlt, imgUrl)
 {
     var media_list = document.getElementsByClassName("media-list");
@@ -102,6 +111,7 @@ function aggiungi_elemento_pizza(nomePizza, nomePizzeria, imgAlt, imgUrl)
     media_list[0].appendChild(new_li_item);
 }
 
+//funzione che permette di aggiungere una nuova pizza alla pressione del tasto "Aggiungi pizza"
 function aggiungi_pizza()
 {
     var pizza = document.getElementById("pizza");
